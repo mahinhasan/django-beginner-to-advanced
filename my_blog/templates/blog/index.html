@@ -1,0 +1,25 @@
+{% extends 'blog/base.html' %}
+
+
+{% block content %}
+    <h1>Welcome to Mh.Mahin world!</h1>
+
+    
+    {% for post in object_list %}
+        <h2><a href="{% url 'detail' post.pk %}">{{post.title}}</a></h2>
+        <p>{{post.body}}</p>
+        <hr>
+            
+            {% for comment in post.comments.all %}
+                Author: <p class="small">{{comment.author}}</p>
+                
+                comment: <p>{{comment}}</p>
+                <hr>
+            
+            {% endfor %}
+                
+        <hr>
+    {% endfor %}
+        
+{% endblock content %}
+    
