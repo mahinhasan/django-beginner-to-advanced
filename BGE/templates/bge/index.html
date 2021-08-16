@@ -1,0 +1,25 @@
+{% extends 'bge/base.html' %}
+{% load static %}
+
+
+
+{% block content %}
+
+<div class="section">
+    <div class="container">
+        <div class="row">
+            {% for bge in object_list %}
+            <div class="col-md-6">
+                
+                <span>{{bge.time}}</span><br>
+                <a href="{% url 'detail' bge.pk %}"><h5>{{bge.title|truncatewords:10|safe}}</h5></a>
+                {% autoescape off %}
+                <p style="font-size: 15px !important;">{{bge.body|truncatechars:50|safe}}</p>
+                {%endautoescape%}
+
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock content %}

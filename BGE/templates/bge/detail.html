@@ -1,0 +1,115 @@
+{% extends 'bge/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="container">
+    <div class="container">
+
+        <div class="cs-blog-detail">
+
+            <div class="cs-post-title">
+                <!-- <div class="cs-author">
+                    <figure>
+                        <a href="#" alt=""> <img src="{% static 'images/author.jpeg' %}" alt=""></a>
+                    </figure>
+                    <div class="cs-text">
+                        <a href="http://jobcareer.chimpgroup.com/jobdoor/user/jobcareer-admin/">Jannat Munmun</a>
+                    </div>
+                </div> -->
+                <div class="cs-author">
+                    <figure>
+                        <a href="#"><img width="32" height="32"
+                                onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
+                                data-pagespeed-url-hash="1229941675" class="avatar avatar-32 photo"
+                                srcset="http://1.gravatar.com/avatar/7a20fad302fc2dd4b4649dc5bdb3c463?s=64&amp;d=mm&amp;r=g 2x"
+                                src="{% static 'images/author.jpeg' %}" alt=""></a>
+                    </figure>
+                    <div class="cs-text">
+                        <a href="#">Jannat Ferdous</a>
+
+                    </div>
+
+                </div>
+                <div class="post-option">
+
+                    <span class="post-date"><a href="#"><i
+                                class="cs-color icon-calendar6"></i>{{detailview.time}}</a></span>
+                    <span class="post-comment"><a href="#"><i class="cs-color icon-chat6 "></i>Comments</a></span>
+
+                    {% if user.is_authenticated %}
+
+
+                    {% if user.id == 1 %}
+                    <span class="post-comment btn btn-success"><a href="{% url 'update' detailview.pk %}"><i
+                                class="cs-color icon-chat6 "></i>Update</a></span>
+                    <span class="post-comment btn btn-danger"><a href="{% url 'delete' detailview.pk %}"><i
+                                class="cs-color icon-chat6"></i>Delete</a></span>
+
+                    {% endif %}
+
+
+                    {% endif %}
+
+
+                </div>
+            </div>
+            <div class="cs-post-option-panel">
+                <div class="title">
+                    <h3>{{detailview.title}}</h3>
+                    <hr class="w-50">    
+                </div>
+                <div class="rich-editor-text">
+                    <p>{{detailview.body|safe}}</p>
+
+                </div>
+            </div>
+            <div class="cs-tags">
+                <div class="tags">
+                    <span>Tags</span>
+                    <ul>
+                        <li><a rel="tag" href="http://jobcareer.chimpgroup.com/jobdoor/tag/college/">BGE</a></li>
+                        <li><a rel="tag" href="http://jobcareer.chimpgroup.com/jobdoor/tag/job/">CSE</a></li>
+                        <li><a rel="tag" href="http://jobcareer.chimpgroup.com/jobdoor/tag/search/">EEE</a></li>
+                        <li><a rel="tag" href="http://jobcareer.chimpgroup.com/jobdoor/tag/teacher/">MEDICAL</a></li>
+                    </ul>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="container" style="font-family: 'Courier New', Courier, monospace;">
+    <!-- <h5 style="font-family: 'Times New Roman', Times, serif;color:brown;background:rgb(90, 175, 164);padding:10px;width:300px" >Need any query email me !!</h5>
+    <form>
+        <div class="form-group">
+          <label for="exampleFormControlInput1">Email address</label>
+          <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+        </div>
+       <br>
+        <div class="form-group">
+          <label for="exampleFormControlTextarea1">Example textarea</label>
+          &nbsp;
+          &nbsp;
+          <textarea class="form-control col-xs-12" rows="3" cols="50"></textarea>
+        </div>
+        <input type="submit" class="btn btn-success" value="comment">
+      </form> -->
+      <form method="post" action="">
+  
+        <h2 style="font-family: 'Times New Roman', Times, serif;">Need any query ?</h2>
+        <label for="exampleFormControlInput1">Full Name: </label>
+        <input id="first-name" type="text" required placeholder="Full Name" name="name">
+        <label for="exampleFormControlInput1">Your Email: </label>
+        <input id="eml" type="email" required placeholder="email@" name="Email">
+        <label for="exampleFormControlInput1">What's your problem ?</label>
+        <textarea rows="6" required placeholder="Message" name="Message"></textarea>
+        
+        <button type="submit">Submit</button>
+        
+      </form>
+</div>
+
+{% endblock content %}
